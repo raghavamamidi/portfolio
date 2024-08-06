@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Health Challenge Tracker",
+        "paragraph": "This is an Angular Based web-application which takes username, workout type and duration of workout. It also displays the workout progress of the user.",
+        "tools": [
+            {
+                "title": "AngularJS"
+            },
+            {
+                "title": "BootStrap"
+            }
+        ],
+        "img": "./assets/img/health-tracker.png",
+        "github": "https://github.com/raghavamamidi/health_tracker"
+    }
+]
+    

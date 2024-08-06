@@ -1,0 +1,115 @@
+@import "mixins";
+@import "variables";
+// variables.scss
+$blue: #3498db; // Primary blue color
+$blue-dark: #2c3e50; // Darker shade of blue for backgrounds
+$white: #ffffff; // White color for text and elements
+$accent-color: #e74c3c; // Accent color, e.g., a shade of red
+$gray21: #cccccc; // Light gray for general use
+$box-shadow: rgba(0, 0, 0, 0.1); // Shadow color
+
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  background: $blue-dark; // Change to a darker background for better contrast
+  transition: background 0.5s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Add a subtle shadow for depth
+}
+
+.toggle {
+  display: none;
+  position: fixed;
+  top: 1.5em; // Adjusted for a more balanced look
+  right: 1.5em; // Adjusted for consistency
+  color: $white; // Use white for better visibility
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $accent-color; // Add hover effect for toggle icon
+  }
+}
+
+.nav {
+  $this: &;
+  @include flex-container(row, flex-end);
+  font-size: 1.4rem; // Slightly smaller font size for a more compact look
+  background: transparent;
+  padding: 12px 20px;
+  transition: background 0.3s, padding 0.3s;
+
+  &__brand {
+    flex-grow: 1;
+    font-size: 1.8rem;
+    font-weight: 400; // Slightly heavier font weight for a stronger presence
+    transform: translateX(-50rem); // Reduced translate for a more subtle animation
+    @include animation-delay(1);
+  }
+
+  &__item {
+    transform: translateX(50rem); // Reduced translate for a more subtle animation
+    padding: 8px 15px; // Adjusted padding for a more compact look
+    @include animation-delay(5);
+    cursor: pointer;
+    color: $white; // Set default color to white
+
+    a {
+      color: inherit; // Ensure links inherit the list item color
+      text-decoration: none; // Remove underline
+      transition: color 0.3s;
+      
+      &:hover {
+        color: $accent-color; // Add hover effect for links
+      }
+    }
+  }
+
+  &--highlighted {
+    #{$this}__item::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: $accent-color; // Highlight color for the underline
+      transition: width 0.3s;
+    }
+
+    #{ $this}__item:hover::after {
+      width: 100%;
+    }
+  }
+
+  &--sticky {
+    background: $blue; // Use a lighter blue for the sticky state
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Increased shadow for more emphasis
+    color: $white; // Ensure text is white on sticky
+    padding: 10px 20px; // Adjusted padding for the sticky state
+  }
+}
+
+@include mq(md, max) {
+  .toggle {
+    display: block;
+  }
+  
+  .nav {
+    display: none;
+    padding-top: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center; 
+  }
+
+  .nav__open {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+    background-color: $blue-dark; // Use dark blue for the expanded mobile menu
+  }
+}
