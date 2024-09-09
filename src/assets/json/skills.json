@@ -29,15 +29,15 @@
     },
   {
         "title":"Ionic",
-        "icon" :"fas fa-4x fa-ionic"
+        "icon" :"fab fa-4x fa-ionic"
     },
   {
         "title":"Capacitor",
-        "icon" :"fas fa-4x fa-capacitor"
+        "icon" :"fas fa-4x fa-bolt"
     },
   {
         "title":"Android Studio",
-        "icon" :"fas fa-4x fa-android"
+        "icon" :"fab fa-4x fa-android"
     }
 
 ]
